@@ -39,12 +39,18 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] What is the purpose of using _sessions_?
+      A way to keep track of a session ID. Who's logged in/authorization
 
 - [ ] What does bcrypt do to help us store passwords in a secure manner.
+      bcrypt chops up passwords like shredded chicken and stores them as hacker like code so that (hashes) so that it is incredibly hard to hack into someones account. Needing something known as a rainbow table to exactly match the password to the hash on the table
 
 - [ ] What does bcrypt do to slow down attackers?
+      Answered above lol. Scrambles up passwords in a random fashion that can only be decoded by something known as a rainbow table which has to exactly guess the password to get the identical hash it also has a built in randomly genterating hash (salt) that increases the complexity of the hash
 
 - [ ] What are the three parts of the JSON Web Token?
+      header.
+      Payload.
+      Signature
 
 ## Minimum Viable Product
 
