@@ -14,7 +14,9 @@ router.post("/register", async (req, res, next) => {
     let user = req.body;
     const hash = bcrypt.hashSync(user.password, 10);
     user.password = hash;
+
     const saved = await Users.add(user);
+    console.log(saved);
     res.status(200).json(saved);
   } catch (error) {
     res.status(400).json(error);
@@ -33,25 +35,30 @@ router.post("/login", async (req, res, next) => {
       return res.status(401).json(authError);
     }
 
-    const passwordValid = await bcrypt.compare(
+    const passwordValid = await bcrypt.compareSync(
       req.body.password,
       user.password
     );
     if (!passwordValid) {
+      console.log(await bcrypt.compare(req.body.password, user.password));
       return res.status(401).json("password incorrect");
-      console.log(res.cookie);
     }
 
     const tokenPayload = {
       userId: user.id,
       userRole: "admin",
     };
-
-    res.cookie("token", jwt.sign(tokenPayload, process.env.JWT_SECRET));
-
     res.json({
-      message: `Welcome ${user.username}!`,
+      message: "sweet",
     });
+
+    // res.cookie("token", jwt.sign(tokenPayload, process.env.JWT_SECRET));
+
+    // console.log(res.cookies);
+
+    // res.json({
+    //   message: `Welcome ${user.username}!`,
+    // });
   } catch (err) {
     next(err);
   }
