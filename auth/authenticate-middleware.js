@@ -4,7 +4,7 @@
 */
 const jwt = require("jsonwebtoken");
 
-function restrict(role = "normal") {
+function restrict(role = "admin") {
   return async (req, res, next) => {
     const authError = {
       message: "Sorry, you do not have permission for that",

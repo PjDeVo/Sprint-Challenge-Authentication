@@ -17,10 +17,10 @@ server.use(cookieParcer());
 
 server.use("/api/users", userRouter);
 server.use("/api/auth", authRouter);
-server.use("/api/jokes", authenticate, jokesRouter);
+server.use("/api/jokes", jokesRouter);
 
 server.get("/", (req, res) => {
-  res.json({ api: "working" });
+  res.status(200).json({ api: "working" });
 });
 
 module.exports = server;

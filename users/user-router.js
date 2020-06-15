@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get("/", restrict(), async (req, res) => {
   try {
-    res.json(await Users.find());
+    res.status(200).json(await Users.find());
   } catch (error) {
     res.status(400).json({ error });
   }
